@@ -11,9 +11,11 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from '@/theme';
 
 export default function SignUpScreen() {
   const router = useRouter();
+  const { colors } = useTheme();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,8 +27,8 @@ export default function SignUpScreen() {
 
   return (
     <SafeAreaView
-      style={{ flex: 1, backgroundColor: '#020617' }}
-      className="flex-1 bg-slate-950"
+      style={{ flex: 1, backgroundColor: colors.background }}
+      className="flex-1 bg-background"
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -49,16 +51,20 @@ export default function SignUpScreen() {
                 style={{
                   width: 40,
                   height: 40,
-                  backgroundColor: '#0f172a',
-                  borderColor: '#1e293b',
+                  backgroundColor: colors.surface,
+                  borderColor: colors.surfaceBorder,
                   borderWidth: 1,
                   borderRadius: 12,
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
-                className="w-10 h-10 bg-slate-900 border border-slate-800 rounded-xl items-center justify-center"
+                className="w-10 h-10 bg-surface border border-surface-border rounded-xl items-center justify-center"
               >
-                <Ionicons name="chevron-back" size={20} color="#94a3b8" />
+                <Ionicons
+                  name="chevron-back"
+                  size={20}
+                  color={colors.text.muted}
+                />
               </Pressable>
             </Link>
           </View>
@@ -66,13 +72,13 @@ export default function SignUpScreen() {
           {/* Main Auth Card */}
           <View
             style={{
-              backgroundColor: '#0f172a',
-              borderColor: '#1e293b',
+              backgroundColor: colors.surface,
+              borderColor: colors.surfaceBorder,
               borderWidth: 1,
               padding: 24,
               borderRadius: 24,
             }}
-            className="bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-2xl"
+            className="bg-surface border border-surface-border p-6 rounded-3xl shadow-2xl"
           >
             {/* Header */}
             <View
@@ -93,11 +99,15 @@ export default function SignUpScreen() {
                 }}
                 className="w-14 h-14 bg-indigo-600/15 border border-indigo-500/30 rounded-2xl items-center justify-center mb-4"
               >
-                <Ionicons name="person-add" size={26} color="#818cf8" />
+                <Ionicons
+                  name="person-add"
+                  size={26}
+                  color={colors.brand.accent}
+                />
               </View>
               <Text
                 style={{
-                  color: '#ffffff',
+                  color: colors.text.primary,
                   fontSize: 24,
                   fontWeight: '700',
                   marginBottom: 4,
@@ -107,8 +117,12 @@ export default function SignUpScreen() {
                 Create Account
               </Text>
               <Text
-                style={{ color: '#94a3b8', fontSize: 14, textAlign: 'center' }}
-                className="text-slate-400 text-sm text-center"
+                style={{
+                  color: colors.text.muted,
+                  fontSize: 14,
+                  textAlign: 'center',
+                }}
+                className="text-text-muted text-sm text-center"
               >
                 Join RN Scaffold to start building mobile apps
               </Text>
@@ -119,7 +133,7 @@ export default function SignUpScreen() {
               <View>
                 <Text
                   style={{
-                    color: '#cbd5e1',
+                    color: colors.text.secondary,
                     fontSize: 12,
                     fontWeight: '600',
                     marginBottom: 8,
@@ -132,25 +146,29 @@ export default function SignUpScreen() {
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
-                    backgroundColor: '#020617',
-                    borderColor: '#1e293b',
+                    backgroundColor: colors.background,
+                    borderColor: colors.surfaceBorder,
                     borderWidth: 1,
                     borderRadius: 12,
                     paddingHorizontal: 16,
                     paddingVertical: 12,
                   }}
-                  className="flex-row items-center bg-slate-950 border border-slate-800 rounded-xl px-4 py-3"
+                  className="flex-row items-center bg-background border border-surface-border rounded-xl px-4 py-3"
                 >
-                  <Ionicons name="person-outline" size={20} color="#64748b" />
+                  <Ionicons
+                    name="person-outline"
+                    size={20}
+                    color={colors.text.muted}
+                  />
                   <TextInput
                     value={name}
                     onChangeText={setName}
                     placeholder="Jane Doe"
-                    placeholderTextColor="#64748b"
+                    placeholderTextColor={colors.text.muted}
                     style={{
                       flex: 1,
                       marginLeft: 12,
-                      color: '#ffffff',
+                      color: colors.text.primary,
                       fontSize: 16,
                     }}
                     className="flex-1 ml-3 text-white text-base py-0"
@@ -161,7 +179,7 @@ export default function SignUpScreen() {
               <View>
                 <Text
                   style={{
-                    color: '#cbd5e1',
+                    color: colors.text.secondary,
                     fontSize: 12,
                     fontWeight: '600',
                     marginBottom: 8,
@@ -174,27 +192,31 @@ export default function SignUpScreen() {
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
-                    backgroundColor: '#020617',
-                    borderColor: '#1e293b',
+                    backgroundColor: colors.background,
+                    borderColor: colors.surfaceBorder,
                     borderWidth: 1,
                     borderRadius: 12,
                     paddingHorizontal: 16,
                     paddingVertical: 12,
                   }}
-                  className="flex-row items-center bg-slate-950 border border-slate-800 rounded-xl px-4 py-3"
+                  className="flex-row items-center bg-background border border-surface-border rounded-xl px-4 py-3"
                 >
-                  <Ionicons name="mail-outline" size={20} color="#64748b" />
+                  <Ionicons
+                    name="mail-outline"
+                    size={20}
+                    color={colors.text.muted}
+                  />
                   <TextInput
                     value={email}
                     onChangeText={setEmail}
                     placeholder="name@example.com"
-                    placeholderTextColor="#64748b"
+                    placeholderTextColor={colors.text.muted}
                     keyboardType="email-address"
                     autoCapitalize="none"
                     style={{
                       flex: 1,
                       marginLeft: 12,
-                      color: '#ffffff',
+                      color: colors.text.primary,
                       fontSize: 16,
                     }}
                     className="flex-1 ml-3 text-white text-base py-0"
@@ -205,7 +227,7 @@ export default function SignUpScreen() {
               <View>
                 <Text
                   style={{
-                    color: '#cbd5e1',
+                    color: colors.text.secondary,
                     fontSize: 12,
                     fontWeight: '600',
                     marginBottom: 8,
@@ -218,26 +240,30 @@ export default function SignUpScreen() {
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
-                    backgroundColor: '#020617',
-                    borderColor: '#1e293b',
+                    backgroundColor: colors.background,
+                    borderColor: colors.surfaceBorder,
                     borderWidth: 1,
                     borderRadius: 12,
                     paddingHorizontal: 16,
                     paddingVertical: 12,
                   }}
-                  className="flex-row items-center bg-slate-950 border border-slate-800 rounded-xl px-4 py-3"
+                  className="flex-row items-center bg-background border border-surface-border rounded-xl px-4 py-3"
                 >
-                  <Ionicons name="key-outline" size={20} color="#64748b" />
+                  <Ionicons
+                    name="key-outline"
+                    size={20}
+                    color={colors.text.muted}
+                  />
                   <TextInput
                     value={password}
                     onChangeText={setPassword}
                     placeholder="••••••••"
-                    placeholderTextColor="#64748b"
+                    placeholderTextColor={colors.text.muted}
                     secureTextEntry={!showPassword}
                     style={{
                       flex: 1,
                       marginLeft: 12,
-                      color: '#ffffff',
+                      color: colors.text.primary,
                       fontSize: 16,
                     }}
                     className="flex-1 ml-3 text-white text-base py-0"
@@ -246,7 +272,7 @@ export default function SignUpScreen() {
                     <Ionicons
                       name={showPassword ? 'eye-off-outline' : 'eye-outline'}
                       size={20}
-                      color="#64748b"
+                      color={colors.text.muted}
                     />
                   </Pressable>
                 </View>
@@ -257,17 +283,21 @@ export default function SignUpScreen() {
             <Pressable
               onPress={handleSignUp}
               style={{
-                backgroundColor: '#4f46e5',
+                backgroundColor: colors.brand.primary,
                 paddingVertical: 16,
                 borderRadius: 12,
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBottom: 24,
               }}
-              className="bg-indigo-600 active:bg-indigo-700 py-4 rounded-xl items-center justify-center shadow-lg shadow-indigo-600/30 mb-6"
+              className="bg-brand active:bg-brand-hover py-4 rounded-xl items-center justify-center shadow-lg shadow-indigo-600/30 mb-6"
             >
               <Text
-                style={{ color: '#ffffff', fontWeight: '700', fontSize: 16 }}
+                style={{
+                  color: colors.text.primary,
+                  fontWeight: '700',
+                  fontSize: 16,
+                }}
                 className="text-white font-bold text-base"
               >
                 Create Account
@@ -284,8 +314,8 @@ export default function SignUpScreen() {
               className="flex-row justify-center items-center"
             >
               <Text
-                style={{ color: '#94a3b8', fontSize: 14 }}
-                className="text-slate-400 text-sm"
+                style={{ color: colors.text.muted, fontSize: 14 }}
+                className="text-text-muted text-sm"
               >
                 Already have an account?{' '}
               </Text>
@@ -293,11 +323,11 @@ export default function SignUpScreen() {
                 <Pressable>
                   <Text
                     style={{
-                      color: '#818cf8',
+                      color: colors.brand.accent,
                       fontWeight: '600',
                       fontSize: 14,
                     }}
-                    className="text-indigo-400 font-semibold text-sm"
+                    className="text-brand-accent font-semibold text-sm"
                   >
                     Sign In
                   </Text>
